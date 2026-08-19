@@ -94,15 +94,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MS Marketplace — Marketplace Systems Architect" },
+      { title: "Mostafa Samir | Senior Full Stack Engineer" },
       {
         name: "description",
         content:
-          "Portfolio of Mostafa Samir — multi-vendor marketplaces, real-time bidding engines and high-scale commerce systems.",
+          "Portfolio of Mostafa Samir — .NET 8 microservices, React and Angular platforms, multi-vendor marketplaces and high-scale commerce systems.",
       },
       { name: "author", content: "Mostafa Samir" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "MS Marketplace" },
+      { property: "og:site_name", content: "Mostafa Samir" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#FF4B35" },
     ],
@@ -131,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "MS Marketplace",
+          name: "Mostafa Samir — Senior Full Stack Engineer",
           url: "/",
           author: { "@type": "Person", name: "Mostafa Samir" },
         }),
