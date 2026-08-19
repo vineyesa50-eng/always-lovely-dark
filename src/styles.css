@@ -274,9 +274,6 @@
   letter-spacing: 0.35em;
 }
 
-@utility glow-accent {
-  box-shadow: var(--glow);
-}
 
 @utility grid-bg {
   background-image: radial-gradient(
