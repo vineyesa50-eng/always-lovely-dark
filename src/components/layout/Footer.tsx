@@ -116,7 +116,7 @@ export function Footer() {
       <div className="w-full bg-background pt-1 pb-10 px-4 sm:px-8 md:px-12">
         <div className="mx-auto max-w-6xl">
           {/* Inner Card Panel */}
-          <div className="relative rounded-2xl bg-card p-8 sm:p-10 md:p-14 border border-border shadow-[var(--shadow-glow)] mb-8 md:mb-12 overflow-hidden">
+          <div className="relative rounded-2xl bg-card p-8 sm:p-10 md:p-14 border border-border shadow-glow mb-8 md:mb-12 overflow-hidden">
             {/* Center Divider */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-border -translate-x-1/2 pointer-events-none" />
 

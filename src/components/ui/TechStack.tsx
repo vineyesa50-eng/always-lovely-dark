@@ -22,7 +22,7 @@ export function TechStack({ techs, variant = "grid", className = "" }: TechStack
 
   return (
     <div
-      className={`rounded-2xl bg-card p-8 border border-border shadow-[var(--shadow-glow)] ${className}`}
+      className={`rounded-2xl bg-card p-8 border border-border shadow-glow ${className}`}
     >
       <h2 className="font-['Oswald',sans-serif] text-3xl font-bold text-card-foreground mb-6 uppercase">
         Tech Stack

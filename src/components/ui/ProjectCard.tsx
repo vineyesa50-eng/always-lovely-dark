@@ -35,7 +35,7 @@ export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps)
           ? { duration: 0 }
           : { type: "spring", stiffness: 120, damping: 18, mass: 0.6 },
       }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-glow)] transition-all duration-300 hover:-translate-y-2 hover:border-border/60 text-card-foreground"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card border border-border p-6 shadow-glow transition-all duration-300 hover:-translate-y-2 hover:border-border/60 text-card-foreground"
     >
       <ProjectCardImage project={project} priority={index < 3} />
 

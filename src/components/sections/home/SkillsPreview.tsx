@@ -19,7 +19,7 @@ export function SkillsPreview() {
         <div className="grid gap-4 sm:grid-cols-2">
           {featured.map((group, i) => (
             <Reveal key={group.title} delay={i * 0.08}>
-              <div className="bg-card border border-border h-full rounded-2xl p-6 shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-1">
+              <div className="bg-card border border-border h-full rounded-2xl p-6 shadow-glow transition-transform hover:-translate-y-1">
                 <h3 className="mb-4 flex items-center gap-3 text-lg font-bold">
                   <span className="size-2 rounded-full bg-accent" />
                   {skillGroupTitle(group.title)}

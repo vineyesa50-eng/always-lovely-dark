@@ -147,7 +147,7 @@ export function ExperiencePreview() {
                   transition={{ duration: 0.25, ease: EASE }}
                   className={`overflow-hidden rounded-2xl ${
                     featured
-                      ? "bg-foreground text-background shadow-[var(--shadow-glow)]"
+                      ? "bg-foreground text-background shadow-glow"
                       : "border border-border bg-card text-card-foreground shadow-md hover:shadow-lg"
                   }`}
                 >

@@ -34,7 +34,7 @@ export function Projects() {
               <Reveal
                 key={project.id}
                 delay={index * 0.1}
-                className="relative flex flex-col justify-between rounded-2xl bg-card p-7 border border-border shadow-[var(--shadow-glow)] group hover:-translate-y-2 transition-all duration-300"
+                className="relative flex flex-col justify-between rounded-2xl bg-card p-7 border border-border shadow-glow group hover:-translate-y-2 transition-all duration-300"
               >
                 <div>
                   {/* Header Row */}
