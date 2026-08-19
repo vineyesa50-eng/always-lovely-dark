@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@source "../src";
 @import "tw-animate-css";
+@source "../src";
 
 /* Theme variant: .light class is added to <html> when user picks light mode.
    Default (:root) = coral/dark editorial theme. */
@@ -46,6 +46,10 @@
   --color-success: var(--success);
   --color-overlay: var(--overlay);
   --color-overlay-foreground: var(--overlay-foreground);
+
+  /* Elevation tokens -> `shadow-glow` / `shadow-lift` utilities. */
+  --shadow-glow: var(--glow);
+  --shadow-lift: var(--lift);
 
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-display: "Archivo", system-ui, sans-serif;
@@ -128,18 +132,8 @@
   animation: enter-up 0.7s cubic-bezier(0.21, 0.5, 0.3, 1) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 
-  .enter-up {
-    animation: none;
-  }
-}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -160,11 +154,6 @@
   animation: skeleton-sweep 1.4s linear infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .skeleton-shimmer {
-    animation: none;
-  }
-}
 
 /* Defer offscreen section rendering without affecting scroll height. */
 @utility defer-paint {
@@ -176,7 +165,7 @@
 @utility glass {
   background: var(--card);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow);
 }
 
 /* Small status/meta label. Single source of truth for every chip. */
@@ -226,7 +215,7 @@
   @apply btn-base;
   background: var(--accent);
   color: var(--accent-foreground);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow);
   &:hover:not(:disabled) {
     transform: scale(1.03);
   }
@@ -285,9 +274,6 @@
   letter-spacing: 0.35em;
 }
 
-@utility glow-accent {
-  box-shadow: var(--shadow-glow);
-}
 
 @utility grid-bg {
   background-image: radial-gradient(
@@ -303,7 +289,7 @@
     box-shadow 0.35s ease;
   &:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lift);
+    box-shadow: var(--lift);
   }
 }
 
@@ -337,8 +323,8 @@
   --overlay: rgba(0, 0, 0, 0.5);
   --overlay-foreground: #ffffff;
 
-  --shadow-glow: 0 20px 45px rgba(160, 20, 0, 0.35);
-  --shadow-lift: 0 24px 50px rgba(160, 20, 0, 0.4);
+  --glow: 0 20px 45px rgba(160, 20, 0, 0.35);
+  --lift: 0 24px 50px rgba(160, 20, 0, 0.4);
   --gradient-media: linear-gradient(135deg, #D93623, #B82816);
 
   /* Social brand tiles (footer) */
@@ -383,8 +369,8 @@
   --accent-muted: rgba(255, 75, 53, 0.12);
   --success: #16a34a;
 
-  --shadow-glow: 0 16px 36px rgba(0, 0, 0, 0.08);
-  --shadow-lift: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --glow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  --lift: 0 20px 40px rgba(0, 0, 0, 0.12);
 
   /* Scrollbar (light mode) — solid brand thumb stays visible before hover */
   --scrollbar-size: 12px;
@@ -460,49 +446,19 @@
   }
 
   /* ---------------------------------------------------------------
-     Arabic / RTL typography
-     - Arabic script is cursive: letter-spacing breaks word shaping,
-       and the Latin display faces have no Arabic glyphs.
-     - So in Arabic we swap every family to the Arabic stack and
-       neutralise tracking / uppercase transforms.
+     RTL typography (direction-driven only).
+     Language-driven Arabic rules live outside @layer base below, so
+     they can beat Tailwind's font-family utilities.
   ----------------------------------------------------------------- */
-  :root[lang="ar"],
-  [dir="rtl"] body {
-    font-family: var(--font-arabic);
-  }
-
   [dir="rtl"] body,
-  [dir="rtl"] h1,
-  [dir="rtl"] h2,
-  [dir="rtl"] h3,
-  [dir="rtl"] h4,
-  [dir="rtl"] h5,
-  [dir="rtl"] h6,
-  [dir="rtl"] button,
-  [dir="rtl"] input,
-  [dir="rtl"] textarea,
-  [dir="rtl"] select {
+  [dir="rtl"] :where(h1, h2, h3, h4, h5, h6, button, input, textarea, select) {
     font-family: var(--font-arabic);
   }
 
-  [dir="rtl"] h1,
-  [dir="rtl"] h2,
-  [dir="rtl"] h3 {
+  [dir="rtl"] :where(h1, h2, h3) {
     letter-spacing: 0;
     line-height: 1.25;
   }
-
-  /* Kill Tailwind tracking/uppercase utilities for Arabic text nodes */
-  :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
-    letter-spacing: normal !important;
-    text-transform: none !important;
-  }
-
-  /* Latin-only bits (logo, tech names, code) keep their original face */
-  .keep-latin {
-    font-family: var(--font-display);
-  }
-
 
   ::selection {
     background-color: var(--accent);
@@ -510,15 +466,21 @@
   }
 }
 
-/* Outside @layer base so it beats Tailwind font-family utilities
-   (font-sans / font-display / arbitrary font-['Oswald'] classes)
+/* Latin-only bits (logo, tech names, code) keep their display face. */
+.keep-latin {
+  font-family: var(--font-display);
+}
+
+/* Outside @layer base so these beat Tailwind font-family / tracking utilities
+   (font-sans, font-display, arbitrary font-['Oswald'], tracking-*, uppercase)
    when the page is in Arabic. */
 :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
   font-family: var(--font-arabic);
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 :root[lang="ar"] body:not(.keep-latin) {
-  font-family: var(--font-arabic);
   /* Cairo reads better with a touch more leading and no synthetic weight jumps */
   line-height: 1.75;
   font-optical-sizing: auto;
@@ -526,17 +488,11 @@
 
 :root[lang="ar"] :where(h1, h2, h3, h4, h5, h6):not(.keep-latin):not(.keep-latin *) {
   line-height: 1.35;
-  letter-spacing: 0;
   word-spacing: 0.02em;
 }
 
 /* Latin fragments (brand, tech names, URLs, numbers) keep their Latin face
    and their own LTR flow so punctuation doesn't jump sides. */
-:root[lang="ar"] .keep-latin,
-:root[lang="ar"] .keep-latin * {
-  font-family: var(--font-display);
-}
-
 :root[lang="ar"] .keep-latin {
   unicode-bidi: isolate;
 }
@@ -592,13 +548,6 @@ html.theme-transition-reverse::view-transition-new(root) {
   z-index: 1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none !important;
-  }
-}
-
 @keyframes pen-writing {
   0%   { transform: translateY(0) rotate(-8deg); }
   50%  { transform: translateY(-2px) rotate(-2deg); }
@@ -608,10 +557,6 @@ html.theme-transition-reverse::view-transition-new(root) {
 .pen-writing {
   animation: pen-writing 0.28s ease-in-out infinite;
   transform-origin: bottom left;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pen-writing { animation: none; }
 }
 
 /* ---------------------------------------------------------------------------
@@ -729,7 +674,32 @@ html.theme-transition-reverse::view-transition-new(root) {
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * Reduced motion — single source of truth. Declared last so it wins over
+ * every animation defined above without needing !important.
+ * ------------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .enter-up,
+  .skeleton-shimmer,
+  .pen-writing,
+  .app-preloader__art,
+  .app-preloader__name,
+  .app-preloader__role {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
   .app-preloader {
     display: none !important;
   }

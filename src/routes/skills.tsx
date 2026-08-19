@@ -52,7 +52,7 @@ function SkillsPage() {
             return (
               <div
                 key={title}
-                className="rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-glow)]"
+                className="rounded-2xl border border-border bg-card p-8 shadow-glow"
               >
                 <div className="mb-6 flex items-center gap-3">
                   <div className="grid size-10 place-items-center rounded-xl border border-border bg-foreground/10 text-primary">

@@ -23,7 +23,7 @@ export function CtaBand({
 }) {
   return (
     <section className="pb-4 pt-10">
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-glow)] sm:p-10">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-glow sm:p-10">
         <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto]">
           <div className="text-center md:text-start">
             {eyebrow ? (

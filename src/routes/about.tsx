@@ -72,7 +72,7 @@ function AboutPage() {
           {PRINCIPLES.map((principle) => (
             <div
               key={principle.titleKey}
-              className="rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-glow)]"
+              className="rounded-2xl border border-border bg-card p-8 shadow-glow"
             >
               <h3 className="mb-3 flex items-center gap-3 font-['Oswald',sans-serif] text-2xl font-bold text-card-foreground">
                 <CheckCircle2 className="size-5 text-primary" />

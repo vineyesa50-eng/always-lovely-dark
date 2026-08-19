@@ -298,7 +298,7 @@ function ProjectDetail() {
             {/* Architecture & tech */}
             <section>
               <SectionHeader icon={Code2} title={tr("project.detail.arch")} />
-              <div className="rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-glow)]">
+              <div className="rounded-2xl border border-border bg-card p-8 shadow-glow">
                 <TechStack techs={project.tech} />
                 {detail.architecture.length > 0 && (
                   <>
