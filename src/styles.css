@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@source "../src";
 @import "tw-animate-css";
+@source "../src";
 
 /* Theme variant: .light class is added to <html> when user picks light mode.
    Default (:root) = coral/dark editorial theme. */
