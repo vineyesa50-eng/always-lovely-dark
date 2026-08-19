@@ -180,7 +180,7 @@
 @utility glass {
   background: var(--card);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow);
 }
 
 /* Small status/meta label. Single source of truth for every chip. */
@@ -230,7 +230,7 @@
   @apply btn-base;
   background: var(--accent);
   color: var(--accent-foreground);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow);
   &:hover:not(:disabled) {
     transform: scale(1.03);
   }
@@ -290,7 +290,7 @@
 }
 
 @utility glow-accent {
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow);
 }
 
 @utility grid-bg {
@@ -307,7 +307,7 @@
     box-shadow 0.35s ease;
   &:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lift);
+    box-shadow: var(--lift);
   }
 }
 
@@ -341,8 +341,8 @@
   --overlay: rgba(0, 0, 0, 0.5);
   --overlay-foreground: #ffffff;
 
-  --shadow-glow: 0 20px 45px rgba(160, 20, 0, 0.35);
-  --shadow-lift: 0 24px 50px rgba(160, 20, 0, 0.4);
+  --glow: 0 20px 45px rgba(160, 20, 0, 0.35);
+  --lift: 0 24px 50px rgba(160, 20, 0, 0.4);
   --gradient-media: linear-gradient(135deg, #D93623, #B82816);
 
   /* Social brand tiles (footer) */
@@ -387,8 +387,8 @@
   --accent-muted: rgba(255, 75, 53, 0.12);
   --success: #16a34a;
 
-  --shadow-glow: 0 16px 36px rgba(0, 0, 0, 0.08);
-  --shadow-lift: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --glow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  --lift: 0 20px 40px rgba(0, 0, 0, 0.12);
 
   /* Scrollbar (light mode) — solid brand thumb stays visible before hover */
   --scrollbar-size: 12px;
