@@ -5,7 +5,7 @@ import { AboutPreview } from "@/components/sections/home/AboutPreview";
 import { SkillsPreview } from "@/components/sections/home/SkillsPreview";
 import { Projects } from "@/components/sections/Projects";
 import { ExperiencePreview } from "@/components/sections/home/ExperiencePreview";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { CredentialsCarousel } from "@/components/credentials/CredentialsCarousel";
 import { ContactCta } from "@/components/sections/home/ContactCta";
 import { pageSeo } from "@/lib/seo";
 import { SITE, absoluteUrl } from "@/lib/site";
@@ -60,7 +60,7 @@ function Index() {
         <AboutPreview />
       </div>
       <div className="defer-paint">
-        <Testimonials />
+        <CredentialsCarousel />
       </div>
       <div className="defer-paint">
         <ContactCta />
