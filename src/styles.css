@@ -464,49 +464,19 @@
   }
 
   /* ---------------------------------------------------------------
-     Arabic / RTL typography
-     - Arabic script is cursive: letter-spacing breaks word shaping,
-       and the Latin display faces have no Arabic glyphs.
-     - So in Arabic we swap every family to the Arabic stack and
-       neutralise tracking / uppercase transforms.
+     RTL typography (direction-driven only).
+     Language-driven Arabic rules live outside @layer base below, so
+     they can beat Tailwind's font-family utilities.
   ----------------------------------------------------------------- */
-  :root[lang="ar"],
-  [dir="rtl"] body {
-    font-family: var(--font-arabic);
-  }
-
   [dir="rtl"] body,
-  [dir="rtl"] h1,
-  [dir="rtl"] h2,
-  [dir="rtl"] h3,
-  [dir="rtl"] h4,
-  [dir="rtl"] h5,
-  [dir="rtl"] h6,
-  [dir="rtl"] button,
-  [dir="rtl"] input,
-  [dir="rtl"] textarea,
-  [dir="rtl"] select {
+  [dir="rtl"] :where(h1, h2, h3, h4, h5, h6, button, input, textarea, select) {
     font-family: var(--font-arabic);
   }
 
-  [dir="rtl"] h1,
-  [dir="rtl"] h2,
-  [dir="rtl"] h3 {
+  [dir="rtl"] :where(h1, h2, h3) {
     letter-spacing: 0;
     line-height: 1.25;
   }
-
-  /* Kill Tailwind tracking/uppercase utilities for Arabic text nodes */
-  :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
-    letter-spacing: normal !important;
-    text-transform: none !important;
-  }
-
-  /* Latin-only bits (logo, tech names, code) keep their original face */
-  .keep-latin {
-    font-family: var(--font-display);
-  }
-
 
   ::selection {
     background-color: var(--accent);
