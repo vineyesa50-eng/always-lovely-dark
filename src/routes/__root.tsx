@@ -131,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "MS Marketplace",
+          name: "Mostafa Samir — Senior Full Stack Engineer",
           url: "/",
           author: { "@type": "Person", name: "Mostafa Samir" },
         }),
