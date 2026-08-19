@@ -484,15 +484,21 @@
   }
 }
 
-/* Outside @layer base so it beats Tailwind font-family utilities
-   (font-sans / font-display / arbitrary font-['Oswald'] classes)
+/* Latin-only bits (logo, tech names, code) keep their display face. */
+.keep-latin {
+  font-family: var(--font-display);
+}
+
+/* Outside @layer base so these beat Tailwind font-family / tracking utilities
+   (font-sans, font-display, arbitrary font-['Oswald'], tracking-*, uppercase)
    when the page is in Arabic. */
 :root[lang="ar"] *:not(.keep-latin):not(.keep-latin *) {
   font-family: var(--font-arabic);
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
 :root[lang="ar"] body:not(.keep-latin) {
-  font-family: var(--font-arabic);
   /* Cairo reads better with a touch more leading and no synthetic weight jumps */
   line-height: 1.75;
   font-optical-sizing: auto;
@@ -500,17 +506,11 @@
 
 :root[lang="ar"] :where(h1, h2, h3, h4, h5, h6):not(.keep-latin):not(.keep-latin *) {
   line-height: 1.35;
-  letter-spacing: 0;
   word-spacing: 0.02em;
 }
 
 /* Latin fragments (brand, tech names, URLs, numbers) keep their Latin face
    and their own LTR flow so punctuation doesn't jump sides. */
-:root[lang="ar"] .keep-latin,
-:root[lang="ar"] .keep-latin * {
-  font-family: var(--font-display);
-}
-
 :root[lang="ar"] .keep-latin {
   unicode-bidi: isolate;
 }
