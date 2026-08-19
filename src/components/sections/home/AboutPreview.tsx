@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import portraitAsset from "@/assets/portrait-cutout.png.asset.json";
+import portraitPng from "@/assets/portrait-cutout.png";
 import portraitAvif from "@/assets/portrait-cutout.avif";
 import { PenTyping } from "@/components/ui/PenTyping";
 
@@ -74,7 +74,7 @@ export function AboutPreview() {
                 <picture>
                   <source type="image/avif" srcSet={portraitAvif} />
                   <img
-                  src={portraitAsset.url}
+                  src={portraitPng}
                   alt="Portrait of Mostafa Samir"
                   width={861}
                   height={768}
