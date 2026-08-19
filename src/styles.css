@@ -47,6 +47,10 @@
   --color-overlay: var(--overlay);
   --color-overlay-foreground: var(--overlay-foreground);
 
+  /* Elevation tokens -> `shadow-glow` / `shadow-lift` utilities. */
+  --shadow-glow: var(--glow);
+  --shadow-lift: var(--lift);
+
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-display: "Archivo", system-ui, sans-serif;
   --font-arabic: "Cairo", "Tajawal", "Noto Sans Arabic", system-ui, sans-serif;
