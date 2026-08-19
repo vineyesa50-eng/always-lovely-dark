@@ -132,18 +132,8 @@
   animation: enter-up 0.7s cubic-bezier(0.21, 0.5, 0.3, 1) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 
-  .enter-up {
-    animation: none;
-  }
-}
+
 
 
 /* ---------------------------------------------------------------------------
