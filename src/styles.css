@@ -164,11 +164,6 @@
   animation: skeleton-sweep 1.4s linear infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .skeleton-shimmer {
-    animation: none;
-  }
-}
 
 /* Defer offscreen section rendering without affecting scroll height. */
 @utility defer-paint {
