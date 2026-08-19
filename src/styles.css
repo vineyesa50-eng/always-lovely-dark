@@ -703,7 +703,32 @@ html.theme-transition-reverse::view-transition-new(root) {
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * Reduced motion — single source of truth. Declared last so it wins over
+ * every animation defined above without needing !important.
+ * ------------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .enter-up,
+  .skeleton-shimmer,
+  .pen-writing,
+  .app-preloader__art,
+  .app-preloader__name,
+  .app-preloader__role {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
   .app-preloader {
     display: none !important;
   }
