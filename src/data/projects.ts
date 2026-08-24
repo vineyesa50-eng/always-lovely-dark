@@ -1,277 +1,190 @@
-export type ProjectCategory =
-  | "Clothing"
-  | "Beauty"
-  | "Jewelry"
-  | "Furniture"
-  | "Dashboard"
-  | "Web3"
-  | "Sports"
-  | "Tech Accessories"
-  | "Backend";
+import bookingTiny from "@/assets/work-booking-420.webp";
+import bookingSm from "@/assets/work-booking-700.webp";
+import booking from "@/assets/work-booking.webp";
+import clinicTiny from "@/assets/work-clinic-420.webp";
+import clinicSm from "@/assets/work-clinic-700.webp";
+import clinic from "@/assets/work-clinic.webp";
+import ehrTiny from "@/assets/work-ehr-420.webp";
+import ehrSm from "@/assets/work-ehr-700.webp";
+import ehr from "@/assets/work-ehr.webp";
+import telemedTiny from "@/assets/work-telemed-420.webp";
+import telemedSm from "@/assets/work-telemed-700.webp";
+import telemed from "@/assets/work-telemed.webp";
 
-export interface Project {
-  id: string;
+export type Project = {
+  slug: string;
+  index: string;
+  quote?: string;
   title: string;
+  subtitle: string;
+  client: string;
+  role: string;
+  year: string;
   description: string;
-  category: ProjectCategory;
-  client?: string;
-  type: "Team" | "Freelance" | "Self";
-  tech: string[];
-  database?: string;
-  status?: "In Progress" | "Completed" | "Deployed";
-  badges?: string[];
-  live: string;
-  github?: string;
-  image?: string;
-  metrics?: { label: string; value: string }[];
-  gradient?: string;
-}
+  image: string;
+  imageSmall: string;
+  imageTiny: string;
+  imageAlt: string;
+  palette: string[];
+  paletteNote?: string;
+  layout: "image-left" | "image-right";
+  tags: string[];
+  metrics: string[];
+};
 
 export const projects: Project[] = [
   {
-    id: "town-team",
-    title: "Town Team",
+    slug: "ehr-platform",
+    index: "01",
+    quote: "“A modular EHR core built for safety, privacy, and scale.”",
+    title: "Electronic Health Record Platform",
+    subtitle: "Modular EHR & Clinical Data Core",
+    client: "Multi-Clinic Health Network",
+    role: "Senior Full-Stack Engineer · Healthcare",
+    year: "2024",
     description:
-      "Team-based clothing e-commerce platform with inventory management and team collaboration features.",
-    category: "Clothing",
-    type: "Team",
-    tech: ["React"],
-    live: "https://town-team-three.vercel.app/",
-    image: "/projects/react/TownTeam.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.18 30), oklch(0.45 0.12 320))",
+      "Built a modular EHR core with .NET 8 microservices and Clean Architecture: patient charts, encounters, problem lists, allergies, and e-prescribing. Designed for HIPAA-aligned auditing, per-facility data isolation, and clinician-level role-based access.",
+    image: ehr,
+    imageSmall: ehrSm,
+    imageTiny: ehrTiny,
+    imageAlt: "Electronic health record platform showing patient chart, encounters, and clinical timeline",
+    palette: ["#0f2a43", "#1f9d8f", "#f08322", "#79c8f2", "#e5493f", "#e8e3da"],
+    layout: "image-left",
+    tags: [".NET 8", "HL7 FHIR R4", "Clean Architecture", "PostgreSQL", "Redis", "RBAC"],
+    metrics: ["HIPAA-aligned audit trail", "FHIR R4 resources", "300% faster chart loads"],
   },
   {
-    id: "under-armour",
-    title: "Under Armour Store",
+    slug: "telehealth",
+    index: "02",
+    title: "Telehealth & Remote Monitoring",
+    subtitle: "Virtual Care and Live Vitals",
+    client: "Telemedicine Provider",
+    role: "Senior Software Developer",
+    year: "2024",
     description:
-      "Full-featured e-commerce platform for athletic apparel with product catalog and checkout system.",
-    category: "Clothing",
-    client: "Under Armour",
-    type: "Team",
-    tech: ["React", "MySQL"],
-    database: "MySQL",
-    live: "https://under-armour-chi.vercel.app/",
-    image: "/projects/react/UNDER-ARMOUR.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 230), oklch(0.5 0.15 190))",
+      "Developed a telehealth platform with secure video visits, clinical note capture, and real-time remote patient monitoring. SignalR streams vitals from 1,000+ connected medical devices into clinician dashboards with threshold-based alerting.",
+    image: telemed,
+    imageSmall: telemedSm,
+    imageTiny: telemedTiny,
+    imageAlt: "Telehealth dashboard with live patient vitals, video consultation panel, and alerts",
+    palette: ["#1f9d8f", "#5fc3b6", "#cfe8e3", "#f2795c", "#79c8f2", "#16283c"],
+    layout: "image-right",
+    tags: ["Angular", ".NET", "SignalR", "WebRTC", "RPM Devices", "Azure"],
+    metrics: ["1,000+ monitored devices", "Sub-second vitals", "Automated clinical alerts"],
   },
   {
-    id: "ohanna-landing",
-    title: "Ohanna Landing Page",
-    description: "Modern landing page for fashion brand with dark aesthetic and product showcase.",
-    category: "Clothing",
-    client: "Dark Primid",
-    type: "Freelance",
-    tech: ["React", "PostgreSQL"],
-    database: "PostgreSQL",
-    live: "https://ohanna-api-73.vercel.app/",
-    image: "/projects/react/ohanna.png",
-    gradient: "linear-gradient(135deg, oklch(0.65 0.17 145), oklch(0.55 0.14 110))",
-  },
-  {
-    id: "lumina-beauty",
-    title: "Lumina Beauty",
+    slug: "hl7-fhir-interop",
+    index: "03",
+    title: "HL7 / FHIR Interoperability Layer",
+    subtitle: "Hospital Systems Integration",
+    client: "Hospital Information Systems",
+    role: "Senior Full-Stack Engineer",
+    year: "2023",
     description:
-      "Beauty and cosmetics e-commerce platform with product filtering and recommendation system.",
-    category: "Beauty",
-    type: "Freelance",
-    tech: ["React"],
-    live: "https://luminabeauty-green.vercel.app/",
-    image: "/projects/react/luminabeauty.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 60), oklch(0.5 0.14 30))",
+      "Engineered an interoperability layer bridging legacy HL7 v2 feeds, FHIR APIs, LIS lab results, and PACS imaging orders. Idempotent message processing, terminology mapping (ICD-10, SNOMED CT, LOINC), and full audit logging keep patient data consistent across systems.",
+    image: clinic,
+    imageSmall: clinicSm,
+    imageTiny: clinicTiny,
+    imageAlt: "Healthcare interoperability flow connecting HL7 v2, FHIR APIs, lab, and imaging systems",
+    palette: ["#0f2a43", "#1f9d8f", "#f08322", "#d9584f", "#b9bfc4", "#e7f0ec"],
+    paletteNote:
+      "Built around idempotent message pipelines, terminology mapping, and immutable audit logs so clinical data stays reliable across every connected hospital system.",
+    tags: ["HL7 v2", "FHIR", "ICD-10 / SNOMED", "LOINC", "Docker", "CI/CD"],
+    layout: "image-left",
+    metrics: ["Zero-loss message pipeline", "Terminology mapped", "Full clinical audit"],
   },
   {
-    id: "little-boys",
-    title: "Little Boys Fashion",
+    slug: "patient-portal",
+    index: "04",
+    title: "Patient Portal & Appointment Booking",
+    subtitle: "Patient-Facing Digital Front Door",
+    client: "Primary Care Group",
+    role: "Full-Stack Developer",
+    year: "2023",
     description:
-      "Specialized clothing store for children with size guides and parent-friendly interface.",
-    category: "Clothing",
-    type: "Freelance",
-    tech: ["React"],
-    live: "https://little-boys.vercel.app/",
-    image: "/projects/react/little-boys.png",
-    gradient: "linear-gradient(135deg, oklch(0.58 0.18 300), oklch(0.5 0.15 270))",
-  },
-  {
-    id: "clothing-shop",
-    title: "Clothing Shop",
-    description:
-      "Full-stack clothing e-commerce application with user authentication and order management.",
-    category: "Clothing",
-    type: "Freelance",
-    tech: ["React", "PostgreSQL"],
-    database: "PostgreSQL",
-    live: "https://clothing-shop-pearl.vercel.app/",
-    image: "/projects/react/HAVEN.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.18 30), oklch(0.45 0.12 320))",
-  },
-  {
-    id: "lumina",
-    title: "Lumina (Beauty Platform)",
-    description:
-      "Comprehensive beauty and cosmetics marketplace with vendor management and customer reviews.",
-    category: "Beauty",
-    type: "Freelance",
-    tech: ["React"],
-    live: "https://lumina-pi-two.vercel.app/",
-    image: "/projects/react/luminabeaut.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 230), oklch(0.5 0.15 190))",
-  },
-  {
-    id: "linea-jewelry",
-    title: "Linea Jewelry Store",
-    description:
-      "Premium jewelry e-commerce platform with product customization and wishlist features.",
-    category: "Jewelry",
-    type: "Freelance",
-    tech: ["React"],
-    status: "Completed",
-    badges: ["Done", "Deployed"],
-    live: "https://linea-jewelry-chi.vercel.app/",
-    image: "/projects/react/linea-jewelry.png",
-    gradient: "linear-gradient(135deg, oklch(0.65 0.17 145), oklch(0.55 0.14 110))",
-  },
-  {
-    id: "vingo-roll",
-    title: "Vingo Roll",
-    description:
-      "Web3-enabled furniture marketplace with blockchain transactions and NFT integration.",
-    category: "Furniture",
-    type: "Team",
-    tech: ["React", "Web3"],
-    live: "https://vingo-roll-k3y9.vercel.app/",
-    image: "/projects/react/Vingo-Roll.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 60), oklch(0.5 0.14 30))",
-  },
-  {
-    id: "e-inventory",
-    title: "E-Inventory Dashboard",
-    description:
-      "Administrative dashboard for inventory management with real-time stock tracking and analytics.",
-    category: "Dashboard",
-    type: "Self",
-    tech: ["React"],
-    status: "Completed",
-    live: "https://e-inventory-flame.vercel.app/login",
-    image: "/projects/react/E-Inventory.png",
-    gradient: "linear-gradient(135deg, oklch(0.58 0.18 300), oklch(0.5 0.15 270))",
-  },
-  {
-    id: "velocity",
-    title: "Velocity Swimming",
-    description:
-      "Community platform for swimming teams with event scheduling and member management.",
-    category: "Sports",
-    type: "Team",
-    tech: ["React", "Web3"],
-    live: "https://velocity-brown-nine.vercel.app/",
-    image: "/projects/react/VELOCITY.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.18 30), oklch(0.45 0.12 320))",
-  },
-  {
-    id: "luxelle",
-    title: "Luxelle",
-    description:
-      "Premium beauty and cosmetics landing page built with Angular and Web3 integration.",
-    category: "Beauty",
-    type: "Team",
-    tech: ["Angular", "Web3"],
-    live: "https://luxelle-landing.vercel.app/",
-    image: "/projects/angular/luxelle-landing.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 230), oklch(0.5 0.15 190))",
-  },
-  {
-    id: "zyro-electric",
-    title: "Zyro Electric",
-    description: "E-commerce platform for tech accessories with modern UI and Web3 capabilities.",
-    category: "Tech Accessories",
-    type: "Team",
-    tech: ["Angular", "Web3"],
-    live: "https://zyro-electric.vercel.app/",
-    image: "/projects/angular/zyro-electric.png",
-    gradient: "linear-gradient(135deg, oklch(0.58 0.18 300), oklch(0.5 0.15 270))",
-  },
-  {
-    id: "shop-microservices",
-    title: "Shop Microservices",
-    description:
-      "Advanced e-commerce microservices architecture with Web3 integration and scalable backend infrastructure.",
-    category: "Web3",
-    type: "Team",
-    tech: ["Microservices", "Web3"],
-    github: "https://github.com/Mostafa-SAID7/Shop-Microservices",
-    live: "#",
-    image: "/projects/microservices/Shop.jpg",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.18 30), oklch(0.45 0.12 320))",
-  },
-  {
-    id: "inventory-microservices",
-    title: "Inventory Microservices",
-    description:
-      "Comprehensive inventory management system using microservices architecture with advanced tracking and analytics.",
-    category: "Dashboard",
-    type: "Team",
-    tech: ["Microservices", "Web3"],
-    github: "https://github.com/Mostafa-SAID7/Inventory-Microservices",
-    live: "#",
-    image: "/projects/microservices/Inventory.jpg",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 230), oklch(0.5 0.15 190))",
-  },
-  {
-    id: "market-api",
-    title: "Market API",
-    description:
-      "RESTful API for marketplace operations with MongoDB backend, comprehensive Swagger documentation, and real-time data management.",
-    category: "Backend",
-    client: "Erra Soft",
-    type: "Freelance",
-    tech: ["ASP.NET Core", "MongoDB", "Swagger", "RESTful API"],
-    database: "MongoDB",
-    status: "Completed",
-    live: "http://market-api.runasp.net/index.html",
-    image: "/api/market-api.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.18 30), oklch(0.45 0.12 320))",
-  },
-  {
-    id: "e-commerce-api",
-    title: "E-Commerce API",
-    description:
-      "Full-featured e-commerce backend API with SQL Server database, Swagger documentation, and comprehensive endpoint coverage.",
-    category: "Backend",
-    client: "We3ds",
-    type: "Freelance",
-    tech: ["ASP.NET Core", "SQL Server", "Swagger", "RESTful API"],
-    database: "SQL Server",
-    status: "Completed",
-    live: "http://e-commerce-api73.runasp.net/",
-    image: "/api/e-commerce-api.png",
-    gradient: "linear-gradient(135deg, oklch(0.6 0.16 230), oklch(0.5 0.15 190))",
-  },
-  {
-    id: "marketing-mvc",
-    title: "Marketing MVC",
-    description:
-      "Full-stack marketing application built with ASP.NET MVC and SQL Server, featuring modern UI and comprehensive business logic.",
-    category: "Backend",
-    client: "Erra Soft",
-    type: "Freelance",
-    tech: ["ASP.NET MVC", "SQL Server", "C#"],
-    database: "SQL Server",
-    status: "Completed",
-    live: "#",
-    image: "/api/Marketing-Mvc.jpg",
-    gradient: "linear-gradient(135deg, oklch(0.58 0.18 300), oklch(0.5 0.15 270))",
+      "Built a patient portal with Next.js and .NET: online appointment booking, intake forms, lab result viewing, secure messaging with care teams, and prescription refill requests — accessible, mobile-first, and WCAG 2.1 AA compliant.",
+    image: booking,
+    imageSmall: bookingSm,
+    imageTiny: bookingTiny,
+    imageAlt: "Patient portal interface with appointment booking, lab results, and secure messaging",
+    palette: ["#0f2a43", "#3b82c4", "#79c8f2", "#f08322", "#f6d635", "#e8e3da"],
+    layout: "image-right",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "WCAG 2.1 AA"],
+    metrics: ["40% fewer no-shows", "Mobile-first", "Accessible by design"],
   },
 ];
 
-export const projectFilters: (ProjectCategory | "All")[] = [
-  "All",
-  "Clothing",
-  "Beauty",
-  "Jewelry",
-  "Furniture",
-  "Dashboard",
-  "Web3",
-  "Sports",
-  "Tech Accessories",
-  "Backend",
+export const concepts = [
+  {
+    letter: "A",
+    label: "Consent & access layer",
+    note: "OAuth 2.0 / SMART on FHIR, JWT sessions, clinician RBAC, and patient consent enforcement.",
+  },
+  {
+    letter: "B",
+    label: "Clinical service layer",
+    note: "Clean Architecture microservices for encounters, orders, results, and care plans.",
+  },
+  {
+    letter: "C",
+    label: "Protected data layer",
+    note: "Encrypted PHI storage in PostgreSQL and SQL Server, Redis caching, and immutable audit logs.",
+  },
+];
+
+export const tools = [
+  ".NET 8",
+  "C#",
+  "ASP.NET Core",
+  "HL7 FHIR R4",
+  "HL7 v2",
+  "SMART on FHIR",
+  "DICOM",
+  "ICD-10",
+  "SNOMED CT",
+  "LOINC",
+  "Microservices",
+  "Clean Architecture",
+  "SignalR",
+  "WebRTC",
+  "Angular",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "PostgreSQL",
+  "SQL Server",
+  "Redis",
+  "Azure Health Data Services",
+  "Docker",
+  "Kubernetes",
+];
+
+export const services = [
+  {
+    title: "EHR & Clinical Systems",
+    body: "Patient records, encounters, orders, e-prescribing, and care plans built on .NET 8 microservices with Clean Architecture.",
+    items: ["EHR", ".NET 8", "FHIR R4", "Clean Architecture"],
+  },
+  {
+    title: "Healthcare Interoperability",
+    body: "HL7 v2 and FHIR integrations across EHRs, LIS labs, PACS imaging, and pharmacy systems with reliable, auditable pipelines.",
+    items: ["HL7 v2", "FHIR", "LIS / PACS", "Terminology"],
+  },
+  {
+    title: "Telehealth & Remote Monitoring",
+    body: "Secure video visits, device telemetry, and real-time clinician dashboards with alerting on abnormal vitals.",
+    items: ["WebRTC", "SignalR", "RPM", "Real-time"],
+  },
+  {
+    title: "Compliance, Cloud & DevOps",
+    body: "HIPAA and GDPR-aligned delivery: PHI encryption, audit logging, Azure Health Data Services, Docker, and CI/CD pipelines.",
+    items: ["HIPAA", "GDPR", "Azure", "CI/CD"],
+  },
+];
+
+export const stats = [
+  { value: "4+", label: "Years in health tech" },
+  { value: "300%", label: "Faster chart performance" },
+  { value: "1,000+", label: "Monitored patient devices" },
+  { value: "100%", label: "HIPAA-aligned delivery" },
 ];

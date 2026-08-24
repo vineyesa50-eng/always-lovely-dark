@@ -1,80 +1,69 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/layout/PageShell";
-import { Hero } from "@/components/sections/Hero";
-import { AboutPreview } from "@/components/sections/home/AboutPreview";
-import { SkillsPreview } from "@/components/sections/home/SkillsPreview";
-import { Projects } from "@/components/sections/Projects";
-import { ExperiencePreview } from "@/components/sections/home/ExperiencePreview";
-import { CredentialsCarouselLazy } from "@/components/credentials/CredentialsCarouselLazy";
-import { ContactCta } from "@/components/sections/home/ContactCta";
-import { LazyIsland } from "@/components/ui/LazyIsland";
-import { pageSeo } from "@/lib/seo";
-import { SITE, absoluteUrl } from "@/lib/site";
-const heroIsoAvif = "/images/hero-iso.avif";
 
-const DESCRIPTION =
-  "Portfolio of Mostafa Samir, Senior Full Stack Engineer specializing in .NET 8 microservices, React.js and Angular platforms.";
+import { About } from "@/components/about";
+import { Breakdown } from "@/components/breakdown";
+import { Contact } from "@/components/contact";
+import { Hero } from "@/components/hero";
+import { ProjectSlide } from "@/components/project-slide";
+import { Reveal } from "@/components/reveal";
+import { Services } from "@/components/services";
+import { SiteNav } from "@/components/site-nav";
+import { projects } from "@/data/projects";
+
+const title = "Mostafa Samir — Healthcare Full-Stack Engineer";
+const description =
+  "Healthcare full-stack engineer building EHR platforms, HL7/FHIR interoperability, telehealth, and patient portals with .NET 8, Angular, React, and Next.js. Based in Tanta, Egypt.";
 
 export const Route = createFileRoute("/")({
-  head: () => {
-    const seo = pageSeo({
-      title: `${SITE.name} | ${SITE.role}`,
-      description: DESCRIPTION,
-      path: "/",
-      jsonLd: [
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: SITE.name,
-          jobTitle: SITE.role,
-          url: absoluteUrl("/"),
-          knowsAbout: [
-            ".NET 8 microservices",
-            "Next.js",
-            "Multi-vendor marketplaces",
-            "Real-time bidding systems",
-          ],
-        },
-      ],
-    });
-
-    return {
-      ...seo,
-      links: [
-        ...seo.links,
-        {
-          rel: "preload",
-          as: "image",
-          type: "image/avif",
-          href: heroIsoAvif,
-          fetchPriority: "high",
-        },
-      ],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
 function Index() {
   return (
-    <PageShell contained={false} padded={false}>
-      <Hero />
-      <Projects />
-      <div className="defer-paint">
-        <SkillsPreview />
-      </div>
-      <div className="defer-paint">
-        <ExperiencePreview />
-      </div>
-      <div className="defer-paint">
-        <AboutPreview />
-      </div>
-      <LazyIsland className="defer-paint">
-        <CredentialsCarouselLazy />
-      </LazyIsland>
-      <LazyIsland className="defer-paint">
-        <ContactCta />
-      </LazyIsland>
-    </PageShell>
+    <div className="min-h-screen">
+      <SiteNav />
+      <main>
+        <Hero />
+        <About />
+
+        <section id="work" className="px-4 py-8 sm:px-6 lg:py-12">
+          <div className="mx-auto max-w-6xl space-y-4">
+            <div className="relative overflow-hidden rounded-[2rem] px-2 py-8 sm:py-12">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.2em] text-brand-orange uppercase">
+                    Selected work
+                  </p>
+                </div>
+                <p className="sd-rise max-w-sm text-sm leading-relaxed text-muted-foreground">
+                  EHR platforms, telehealth and remote monitoring, HL7/FHIR interoperability, and
+                  patient-facing portals.
+                </p>
+              </div>
+            </div>
+
+            {projects.map((project) => (
+              <Reveal key={project.slug} variant="tilt">
+                <ProjectSlide project={project} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <Breakdown />
+        <Services />
+        <Contact />
+      </main>
+    </div>
   );
 }
