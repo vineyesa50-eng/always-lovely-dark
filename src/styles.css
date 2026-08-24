@@ -97,18 +97,18 @@
 
   --background: var(--surface);
   --foreground: var(--ink);
-  /* Hero showcase card: always a deep ink surface with light type. */
-  --hero-card: oklch(0.26 0.045 265);
-  --hero-card-foreground: oklch(0.985 0.004 95);
+  /* Hero showcase card: light paper surface with dark type in the default theme. */
+  --hero-card: oklch(0.985 0.004 95);
+  --hero-card-foreground: var(--ink);
   --hero-card-gradient: linear-gradient(
     155deg,
-    oklch(0.32 0.055 268) 0%,
-    oklch(0.25 0.045 265) 48%,
-    oklch(0.21 0.04 262) 100%
+    oklch(1 0 0) 0%,
+    oklch(0.985 0.004 95) 48%,
+    oklch(0.965 0.005 95) 100%
   );
-  --hero-card-edge: oklch(1 0 0 / 0.1);
-  --hero-card-sheen: oklch(1 0 0 / 0.09);
-  --hero-card-shadow: 0 34px 70px -34px oklch(0.28 0.05 265 / 0.55);
+  --hero-card-edge: oklch(0.28 0.05 265 / 0.08);
+  --hero-card-sheen: oklch(1 0 0 / 0.45);
+  --hero-card-shadow: 0 34px 70px -34px oklch(0.28 0.05 265 / 0.18);
   --card: oklch(1 0 0);
   --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
