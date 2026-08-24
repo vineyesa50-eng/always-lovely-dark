@@ -322,8 +322,8 @@
   background-position: 0 0;
 }
 
-/* Hero showcase surface: a deep ink slab that keeps identical hierarchy in
-   both themes — only the depth cues (gradient, edge, shadow) are re-tuned. */
+/* Hero showcase surface: themed slab that adapts to the active palette —
+   light paper in :root and deep ink inside .dark. Depth cues re-tune per theme. */
 @utility hero-surface {
   position: relative;
   background-color: var(--hero-card);
