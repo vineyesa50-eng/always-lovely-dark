@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/chompo/Hero";
 import { IconBand } from "@/components/chompo/IconBand";
 import { CollageGrid } from "@/components/chompo/CollageGrid";
+import { FeaturedSection } from "@/components/chompo/FeaturedSection";
 import { CraveMarquee } from "@/components/chompo/CraveMarquee";
 import { NewMeal } from "@/components/chompo/NewMeal";
 import { TypeSpiral } from "@/components/chompo/TypeSpiral";
@@ -33,6 +34,7 @@ function Index() {
       <Hero />
       <CraveMarquee />
       <CollageGrid />
+      <FeaturedSection />
       <IconBand />
       <NewMeal />
       <TypeSpiral />
