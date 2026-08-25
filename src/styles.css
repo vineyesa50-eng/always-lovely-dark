@@ -301,6 +301,8 @@
     font-family: var(--font-body);
     font-weight: 600;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
