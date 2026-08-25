@@ -14,10 +14,8 @@
  */
 
 @theme inline {
-  /* Typography */
+  /* Typography — one token per loaded family (see __root.tsx <link>). */
   --font-display: "Anton", "Archivo Black", sans-serif;
-  --font-anton: "Anton", sans-serif;
-  --font-bebas: "Bebas Neue", sans-serif;
   --font-oswald: "Oswald", "Barlow Condensed", sans-serif;
   --font-heavy: "Archivo Black", sans-serif;
   --font-slab: "Baloo 2", system-ui, sans-serif;
@@ -303,6 +301,8 @@
     font-family: var(--font-body);
     font-weight: 600;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
