@@ -107,7 +107,7 @@ const metrics = [
 
 export function Expertise() {
   const [active, setActive] = useState(0);
-  const current = services[active];
+  const current = services[active]!;
 
   return (
     <section id="expertise" className="relative section-y">
