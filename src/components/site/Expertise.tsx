@@ -1,58 +1,45 @@
 import { Reveal } from "./Reveal";
-import { Server, LayoutTemplate, Database, ShieldCheck } from "lucide-react";
+import {
+  Server,
+  LayoutTemplate,
+  Database,
+  ShieldCheck,
+  Code2,
+  Braces,
+  Layers,
+  Wind,
+  DatabaseZap,
+  Boxes,
+  CloudCog,
+  GitBranch,
+  Gauge,
+  Lock,
+} from "lucide-react";
 
-const groups = [
-  {
-    icon: Server,
-    title: "Backend",
-    items: [
-      ".NET 8 / Core",
-      "C#",
-      "ASP.NET Web API",
-      "Microservices",
-      "Clean Architecture",
-      "DDD",
-      "SignalR",
-      "gRPC",
-      "Entity Framework",
-    ],
-  },
-  {
-    icon: LayoutTemplate,
-    title: "Frontend",
-    items: [
-      "Angular",
-      "React.js",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Redux",
-    ],
-  },
-  {
-    icon: Database,
-    title: "Data & Performance",
-    items: [
-      "SQL Server (Advanced Tuning)",
-      "PostgreSQL",
-      "Redis",
-      "MongoDB",
-      "High-throughput queries",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "DevOps & Security",
-    items: [
-      "Azure DevOps",
-      "Docker",
-      "Kubernetes",
-      "OAuth 2.0",
-      "JWT",
-      "RBAC",
-      "CI/CD",
-    ],
-  },
+const services = [
+  { icon: Server, title: "Backend Engineering", blurb: ".NET 8, Clean Architecture, DDD" },
+  { icon: LayoutTemplate, title: "Frontend Development", blurb: "Angular, React, Next.js" },
+  { icon: Database, title: "Data & Performance", blurb: "SQL Server tuning, Redis, PostgreSQL" },
+  { icon: ShieldCheck, title: "DevOps & Security", blurb: "Azure, Docker, OAuth 2.0, RBAC" },
+];
+
+const stack = [
+  { icon: Code2, name: ".NET 8 / Core" },
+  { icon: Braces, name: "C# / TypeScript" },
+  { icon: Layers, name: "Angular / React / Next.js" },
+  { icon: Wind, name: "Tailwind CSS" },
+  { icon: DatabaseZap, name: "SQL Server / PostgreSQL" },
+  { icon: Boxes, name: "Redis / MongoDB" },
+  { icon: CloudCog, name: "Azure DevOps / Docker / K8s" },
+  { icon: GitBranch, name: "Microservices / gRPC / SignalR" },
+];
+
+const otherSkills = [
+  { icon: Gauge, label: "Query Optimization" },
+  { icon: Lock, label: "OAuth 2.0 / JWT / RBAC" },
+  { icon: Boxes, label: "Multi-tenant Isolation" },
+  { icon: CloudCog, label: "CI/CD Pipelines" },
+  { icon: Database, label: "High-throughput Queries" },
 ];
 
 const metrics = [
@@ -69,7 +56,7 @@ export function Expertise() {
         <Reveal>
           <p className="eyebrow">Technical Expertise</p>
           <h2 className="display mt-5 max-w-2xl text-[clamp(2.25rem,5vw,4.25rem)]">
-            Core competencies
+            Skills & tools
           </h2>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Focused where booking platforms live or die: multi-tenant isolation,
@@ -78,30 +65,75 @@ export function Expertise() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {groups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.07}>
-              <div className="surface surface-hover h-full p-8 lg:p-10">
-                <g.icon
-                  className="size-5 text-muted-foreground"
-                  strokeWidth={1.25}
-                />
-                <h3 className="display mt-6 text-2xl">{g.title}</h3>
-                <ul className="mt-5 flex flex-wrap gap-x-2 gap-y-2">
-                  {g.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        {/* Sidebar + panel layout */}
+        <Reveal delay={0.08}>
+          <div className="surface mt-16 grid overflow-hidden rounded-2xl lg:grid-cols-[320px_1fr]">
+            {/* Left — What I do */}
+            <aside className="border-b border-border bg-background/60 p-8 lg:border-b-0 lg:border-r lg:p-10">
+              <p className="text-[0.65rem] font-medium tracking-[0.32em] text-muted-foreground">
+                WHAT I DO
+              </p>
+              <ul className="mt-8 space-y-6">
+                {services.map((s) => (
+                  <li key={s.title} className="group flex items-start gap-4">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-elevated transition-colors group-hover:border-border-strong">
+                      <s.icon className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" strokeWidth={1.5} />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-medium leading-snug">
+                        {s.title}
+                      </span>
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        {s.blurb}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
 
+            {/* Right — Skills & tools */}
+            <div className="bg-card p-8 lg:p-10">
+              <p className="text-[0.65rem] font-medium tracking-[0.32em] text-muted-foreground">
+                SOFTWARE SKILLS
+              </p>
+
+              {/* Icon badges */}
+              <ul className="mt-6 flex flex-wrap gap-3">
+                {stack.map((t) => (
+                  <li
+                    key={t.name}
+                    className="group flex items-center gap-2.5 rounded-lg border border-border bg-elevated px-3.5 py-2.5 transition-colors hover:border-border-strong"
+                  >
+                    <span className="flex size-7 items-center justify-center rounded-md border border-border bg-background">
+                      <t.icon className="size-3.5 text-muted-foreground transition-colors group-hover:text-foreground" strokeWidth={1.5} />
+                    </span>
+                    <span className="text-xs font-medium">{t.name}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Other skills — circular icon row */}
+              <p className="mt-10 text-[0.65rem] font-medium tracking-[0.32em] text-muted-foreground">
+                OTHER SKILLS
+              </p>
+              <ul className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
+                {otherSkills.map((o) => (
+                  <li key={o.label} className="flex flex-col items-center gap-3 text-center">
+                    <span className="flex size-14 items-center justify-center rounded-full border border-border bg-elevated transition-colors hover:border-border-strong">
+                      <o.icon className="size-5 text-muted-foreground" strokeWidth={1.25} />
+                    </span>
+                    <span className="text-[0.7rem] leading-tight text-muted-foreground">
+                      {o.label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Metrics */}
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {metrics.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.07}>
