@@ -1,12 +1,12 @@
-# Deep Design Studio
+# Creative Vision Forge
 
-very deeper looking and thinking to be have identical design from have this from desin , imgs , styles ,all have deeper looking to be identical have https://dribbble.com/shots/26920639-Restaurant-and-Food-Delivery-Website-Design-for-Fast-Food-Brand
+clone from this https://github.com/samirsaid3560-hash/creative-vision-forge.git to start with this app
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/247cbd12-a5d9-419a-97f9-3049c2cf6ecf).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e1235219-c0dd-4055-8ff7-97bf6a6790f2).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
