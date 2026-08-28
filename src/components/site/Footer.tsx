@@ -39,9 +39,9 @@ export function Footer() {
 
       <div className="container-page relative grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
         <div>
-          <div className="flex items-center gap-2">
-            <Car className="size-7 text-primary" aria-hidden="true" />
-            <span className="font-display text-xl font-extrabold tracking-tight">
+          <div className="flex flex-col items-start leading-none">
+            <Car className="size-8 text-primary" strokeWidth={2.25} aria-hidden="true" />
+            <span className="font-display text-lg font-extrabold uppercase tracking-[0.18em]">
               MOTO<span className="text-primary">care</span>
             </span>
           </div>
@@ -55,7 +55,7 @@ export function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="grid size-11 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                className="grid size-9 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5 hover:bg-primary-bright"
               >
                 <Icon className="size-4" />
               </a>
@@ -115,8 +115,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} MOTOcare — All Rights Reserved</p>
+        <div className="container-page flex flex-col items-center justify-center gap-2 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-left">
+          <p>© {new Date().getFullYear()} MOTOcare Template — All Rights Reserved</p>
           <p className="flex gap-4">
             <a href="#" className="transition-colors hover:text-primary">
               Privacy Policy
