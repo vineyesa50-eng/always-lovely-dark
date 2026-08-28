@@ -1,12 +1,12 @@
-# Creative Vision Forge
+# Auto Elegance
 
-clone from this https://github.com/samirsaid3560-hash/creative-vision-forge.git to start with this app
+clone this https://github.com/samir3said66-prog/motocare-auto when continue to identical like this https://www.behance.net/gallery/254375011/Wordpress-Auto-Service-Design?tracking_source=search_projects|car+service&l=36
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e1235219-c0dd-4055-8ff7-97bf6a6790f2).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/958ac946-75d5-46e9-acce-56a01b1bf89d).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
