@@ -42,9 +42,13 @@ const NAV: { label: string; to?: string; children?: Item[] }[] = [
 
 function Logo() {
   return (
-    <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="MOTOcare home">
-      <Car className="size-7 text-primary" strokeWidth={2} aria-hidden="true" />
-      <span className="font-display text-xl font-extrabold tracking-tight">
+    <Link
+      to="/"
+      className="flex shrink-0 flex-col items-start leading-none"
+      aria-label="MOTOcare home"
+    >
+      <Car className="size-7 text-primary" strokeWidth={2.25} aria-hidden="true" />
+      <span className="font-display text-lg font-extrabold uppercase tracking-[0.18em]">
         MOTO<span className="text-primary">care</span>
       </span>
     </Link>
@@ -88,7 +92,7 @@ function NavDropdown({
         <Link
           to={to}
           activeProps={{ className: "text-primary" }}
-          className="flex items-center py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="flex items-center py-2 text-sm font-medium text-foreground/85 transition-colors hover:text-primary"
         >
           {trigger}
         </Link>
@@ -97,7 +101,7 @@ function NavDropdown({
           type="button"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="flex items-center py-2 text-sm font-medium text-foreground/85 transition-colors hover:text-primary"
         >
           {trigger}
         </button>
@@ -146,10 +150,10 @@ export function Header() {
         scrolled ? "border-b border-border bg-background/85 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="container-page grid h-18 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-4 lg:grid-cols-[auto_1fr_auto]">
+      <div className="container-page grid h-20 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-4 lg:grid-cols-[auto_1fr_auto]">
         <Logo />
 
-        <nav aria-label="Main" className="hidden items-center justify-center gap-8 lg:flex">
+        <nav aria-label="Main" className="hidden items-center justify-center gap-9 lg:flex">
           {NAV.map((item) =>
             item.children ? (
               <NavDropdown key={item.label} label={item.label} to={item.to} children={item.children} />
@@ -158,7 +162,7 @@ export function Header() {
                 key={item.label}
                 to={item.to!}
                 activeProps={{ className: "text-primary" }}
-                className="py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="py-2 text-sm font-medium text-foreground/85 transition-colors hover:text-primary"
               >
                 {item.label}
               </Link>
@@ -177,7 +181,7 @@ export function Header() {
           >
             {searchOpen ? <X className="size-5" /> : <Search className="size-5" />}
           </Button>
-          <Button asChild className="hidden rounded-full px-6 sm:inline-flex">
+          <Button asChild className="hidden rounded-md px-7 font-semibold sm:inline-flex">
             <Link to="/contact">Contact</Link>
           </Button>
 
@@ -218,7 +222,7 @@ export function Header() {
                     ))}
                   </div>
                 ))}
-                <Button asChild className="mt-6 rounded-full">
+                <Button asChild className="mt-6 rounded-md">
                   <Link to="/contact" onClick={() => setOpen(false)}>
                     Contact
                   </Link>
@@ -246,7 +250,7 @@ export function Header() {
             aria-label="Search the site"
             className="h-11 border-border bg-card"
           />
-          <Button type="submit" className="rounded-full px-6">
+          <Button type="submit" className="rounded-md px-6">
             Search
           </Button>
         </form>
