@@ -51,7 +51,15 @@ function Logo() {
   );
 }
 
-function NavDropdown({ label, to, children }: { label: string; to?: string; children: Item[] }) {
+function NavDropdown({
+  label,
+  to,
+  children,
+}: {
+  label: string;
+  to?: string | undefined;
+  children: Item[];
+}) {
   const [open, setOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
